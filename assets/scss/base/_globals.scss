@@ -5,7 +5,7 @@
 }
 
 body {
-	// font: map-get($font-weights, 'regular') $fontSize map-get($font-families, 'Overpass'), sans-serif;
+	font: map-get($font-weights, 'regular') $fontSize map-get($font-families, 'Josefin Sans'), sans-serif;
 	line-height: 1.5;
 }
 

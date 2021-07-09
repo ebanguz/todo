@@ -1,6 +1,20 @@
 // Colors
-// $gradientColor:;
-// $veryLightGrayishBlue:;
-// $lightGrayishBlue:;
-// $grayishBlue:;
-// $darkGrayishBlue:;
+// // Primary
+$color-primary-bright-blue: hsl(220, 98%, 61%);
+$color-linear-checkbox: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+
+// //  Light Theme
+$color-light-gray: hsl(0, 0%, 98%);
+$color-very-light-grayish-blue: hsl(236, 33%, 92%);
+$color-light-grayish-blue: hsl(233, 11%, 84%);
+$color-dark-grayish-blue: hsl(236, 9%, 61%);
+$color-very-dark-grayish-blue: hsl(235, 19%, 35%);
+
+// // Dark Theme
+$color-very-dark-blue: hsl(235, 21%, 11%);
+$color-very-dark-d-blue: hsl(235, 24%, 19%);
+$color-light-grayish-blue: hsl(234, 39%, 85%);
+$color-light-grayish-blue-hover: hsl(236, 33%, 92%);
+$color-dark-grayish-blue: hsl(234, 11%, 52%);
+$color-very-dark-grayish-blue: hsl(233, 14%, 35%);
+// - Very Dark Grayish Blue: hsl(237, 14%, 26%)

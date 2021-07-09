@@ -1,36 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="./assets/css/main.min.css" />
+		<title>Todo app</title>
+	</head>
+	<body>
+		<picture class="background">
+			<source media="(max-width: 375px)" srcset="images/bg-mobile-light.jpg" />
+			<source media="(min-width: 376px)" srcset="images/bg-desktop-light.jpg" />
+			<img class="background__img" src="images/bg-mobile-light.jpg" alt="background image light" />
+		</picture>
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Todo app</title>
+		<header class="header">
+			<div class="container header__content flex flex-jc-sb">
+				<h1 class="header__title">
+					TODO
+					<span class="is-visually-hidden">TODO by Eban</span>
+				</h1>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+				<button class="btn header__btn">
+					<img src="./images/icon-moon.svg" alt="toggler dark theme" />
+				</button>
+			</div>
+		</header>
 
-  Todo
+		<form action="">
+			<div class="container">
+				<input type="text" name="todo" id="todo" placeholder="Create a new todo..." autocomplete="off" maxlength="250" />
+			</div>
+		</form>
 
-  <!-- Add dynamic number --> items left
+		<section class="todo-list">
+			<div class="container">
+				<ul class="list">
+					<li class="list__item">
+						<input type="radio" />
+						Jog around the park 3x
+						<img src="./images/icon-cross.svg" alt="" />
+					</li>
+					<li class="list__item">
+						<input type="radio" />
+						Jog around the park 3x
+						<img src="./images/icon-cross.svg" alt="" />
+					</li>
+					<li class="list__item">
+						<input type="radio" />
+						Jog around the park 3x
+						<img src="./images/icon-cross.svg" alt="" />
+					</li>
+					<li class="list__item">
+						<input type="radio" />
+						Jog around the park 3x
+						<img src="./images/icon-cross.svg" alt="" />
+					</li>
+					<li class="list__item flex flex-jc-sb">
+						<span># items left</span>
+						<span>Clear Completed</span>
+					</li>
+				</ul>
+			</div>
+		</section>
 
-  All
-  Active 
-  Completed
+		<section class="filter">
+			<div class="container">
+				<div class="radio">
+					<input class="form__radio" label="All" type="radio" id="all" name="status" value="all" />
+					<input class="form__radio" label="Active" type="radio" id="active" name="status" value="active" />
+					<input class="form__radio" label="Completed" type="radio" id="completed" name="status" value="completed" />
+				</div>
+			</div>
+			<!-- .radio input {
+		width: auto;
+		height: 100%;
+		appearance: none;
+		outline: none;
+		cursor: pointer;
+		background: $color-row;
+		color: #728095;
+		transition: all 100ms linear;
+	}
 
-  Clear Completed
+	.radio input:checked {
+		color: #fff;
+		background: #308ef3;
+		box-shadow: 0 1px 1px #0000002e;
+	}
 
-  Drag and drop to reorder list
+	.radio input:before {
+		content: attr(label);
+		display: inline-block;
+		text-align: center;
+		width: 100%;
+	} -->
+		</section>
+		Drag and drop to reorder list
 
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+		<!-- <div class="attribution">
+			Challenge by
+			<a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>
+			. Coded by
+			<a href="#">Your Name Here</a>
+			.
+		</div> -->
+		<script src="./assets/js/main.js"></script>
+	</body>
 </html>

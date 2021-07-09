@@ -1,0 +1,14 @@
+.header {
+	padding: 2em 0;
+
+	&__title {
+		color: $color-light-gray;
+		font-size: 2rem;
+		letter-spacing: 0.354em;
+		margin: 0;
+	}
+	&__btn {
+		background: transparent;
+		border: 0;
+	}
+}
