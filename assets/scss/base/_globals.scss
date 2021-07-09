@@ -6,7 +6,9 @@
 
 body {
 	font: map-get($font-weights, 'regular') $fontSize map-get($font-families, 'Josefin Sans'), sans-serif;
+	background: $color-very-light-grayish-blue;
 	line-height: 1.5;
+	min-height: 100vh;
 }
 
 img {

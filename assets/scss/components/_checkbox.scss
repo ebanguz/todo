@@ -1,0 +1,15 @@
+input[type='checkbox'] {
+	appearance: none;
+	width: 1.5rem;
+	height: 1.5rem;
+	border: 1px $color-light-grayish-blue solid;
+	border-radius: 50%;
+	cursor: pointer;
+
+	&:checked {
+		background: url(/images/icon-check.svg), linear-gradient(149.8deg, #57ddff, #c058f3);
+		background-repeat: no-repeat;
+		background-position: center;
+		border: 0;
+	}
+}
