@@ -1,0 +1,115 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	// font: map-get($font-weights, 'regular') $fontSize map-get($font-families, 'Overpass'), sans-serif;
+	line-height: 1.5;
+}
+
+img {
+	max-width: 100%;
+}
+p {
+	max-width: 75ch;
+	margin-inline: auto;
+	letter-spacing: 0.02em;
+}
+
+.container {
+	width: clamp(16rem, 90vw, 70rem);
+	margin: 0 auto;
+	position: relative;
+
+	&--pall {
+		padding-top: 4.375rem;
+		padding-right: 1.5rem;
+		padding-bottom: 4.375rem;
+		padding-left: 1.5rem;
+
+		@include breakpoint-up(large) {
+			padding-top: 6rem;
+			padding-bottom: 6rem;
+		}
+	}
+	&--py {
+		padding-top: 4.375rem;
+		padding-bottom: 4.375rem;
+
+		@include breakpoint-up(large) {
+			padding-top: 6rem;
+			padding-bottom: 6rem;
+		}
+	}
+	&--px {
+		padding-right: 1.5rem;
+		padding-left: 1.5rem;
+	}
+	&--pt {
+		padding-top: 4.375rem;
+
+		@include breakpoint-up(large) {
+			padding-top: 6rem;
+		}
+	}
+	&--pr {
+		padding-right: 1.5rem;
+	}
+	&--pb {
+		padding-bottom: 4.375rem;
+
+		@include breakpoint-up(large) {
+			padding-bottom: 6rem;
+		}
+	}
+	&--pl {
+		padding-left: 1.5rem;
+	}
+}
+
+a,
+a:visited {
+	color: inherit;
+	text-decoration: none;
+}
+
+.attribution {
+	font-size: 11px;
+	text-align: center;
+	a {
+		color: hsl(228, 45%, 44%);
+	}
+}
+
+.is-visually-hidden {
+	block-size: 1px;
+	inline-size: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	clip: rect(0 0 0 0);
+	-webkit-clip-path: inset(100%);
+	clip-path: inset(100%);
+}
+
+.flex {
+	display: flex;
+
+	&-jc-sb {
+		justify-content: space-between;
+	}
+	&-jc-c {
+		justify-content: center;
+	}
+	&-ai-c {
+		align-items: center;
+	}
+	&-dir-c {
+		flex-direction: column;
+	}
+}
