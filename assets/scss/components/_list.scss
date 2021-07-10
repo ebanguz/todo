@@ -2,14 +2,15 @@
 	list-style: none;
 	padding: 0;
 	border-radius: $border-radius;
+	margin-bottom: 0;
 
 	&__item {
 		display: grid;
-		grid-template-columns: 1fr 10fr 1fr;
-		gap: 0.2em;
+		grid-template-columns: 28px 1fr 20px;
+		gap: 0.3em;
 		align-items: center;
-		padding: $padding;
 		font-size: 0.9rem;
+		padding: $padding;
 		background: $color-light-gray;
 		color: $color-very-dark-grayish-blue;
 		border-bottom: 1px $color-very-light-grayish-blue solid;
@@ -18,22 +19,31 @@
 			border-radius: 5px 5px 0px 0px;
 		}
 
-		// &:hover {
-		// 	.delete-btn {
-		// 		visibility: visible;
-		// 	}
-		// }
+		/*&:hover {
+			.delete-btn {
+				visibility: visible;
+			}
+		}*/
 	}
-
-	&__options {
-		border-radius: 0px 0px 5px 5px;
-		padding: $padding;
-		background: $color-light-gray;
-		color: $color-dark-grayish-blue;
-	}
-
 	.delete-btn {
 		cursor: pointer;
 		visibility: visible;
 	}
+}
+.options {
+	list-style: none;
+	padding: 0;
+	margin-top: 0;
+
+	li {
+		padding: $padding;
+		background: $color-light-gray;
+		color: $color-dark-grayish-blue;
+		border-bottom: 1px $color-very-light-grayish-blue solid;
+
+		&:first-of-type {
+			border-radius: 0px 0px 5px 5px;
+		}
+	}
+	border-radius: 0px 0px 5px 5px;
 }

@@ -1,0 +1,26 @@
+.radio {
+	margin-top: 1em;
+	border-radius: $border-radius;
+
+	input {
+		// width: 20%;
+		height: 100%;
+		appearance: none;
+		outline: none;
+		cursor: pointer;
+		color: #728095;
+		transition: all 100ms linear;
+
+		&:checked {
+			color: #fff;
+			color: $color-primary-bright-blue;
+		}
+
+		&:before {
+			content: attr(label);
+			display: inline-block;
+			text-align: center;
+			width: 100%;
+		}
+	}
+}

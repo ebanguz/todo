@@ -20,6 +20,12 @@ p {
 	letter-spacing: 0.02em;
 }
 
+.drag {
+	text-align: center;
+	font-size: 80%;
+	color: $color-very-dark-grayish-blue;
+}
+
 .container {
 	width: clamp(16rem, 90vw, 70rem);
 	margin: 0 auto;
@@ -104,6 +110,9 @@ a:visited {
 
 	&-jc-sb {
 		justify-content: space-between;
+	}
+	&-jc-se {
+		justify-content: space-evenly;
 	}
 	&-jc-c {
 		justify-content: center;

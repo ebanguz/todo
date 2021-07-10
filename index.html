@@ -31,75 +31,38 @@
 
 		<form action="" class="form">
 			<div class="container flex">
-				<input type="checkbox" />
-				<input type="text" name="todo" id="todo" placeholder="Create a new todo..." autocomplete="off" maxlength="250" />
+				<input type="checkbox" disabled />
+				<input type="text" name="task" id="todo" placeholder="Create a new todo..." autocomplete="off" maxlength="100" />
 			</div>
 		</form>
 
 		<section class="todo-list">
 			<div class="container">
 				<ul class="list">
-					<li class="list__item">
-						<input type="checkbox" />
-						Jog around the park 3x
-						<img class="delete-btn" src="./images/icon-cross.svg" alt="" />
-					</li>
-					<li class="list__item">
-						<input type="checkbox" />
-						Jog around the park 3x
-						<img class="delete-btn" src="./images/icon-cross.svg" alt="" />
-					</li>
-					<li class="list__item">
-						<input type="checkbox" />
-						Jog around the park 3x
-						<img class="delete-btn" src="./images/icon-cross.svg" alt="" />
-					</li>
-					<li class="list__item">
-						<input type="checkbox" />
-						Jog around the park 3x
-						<img class="delete-btn" src="./images/icon-cross.svg" alt="" />
-					</li>
-					<li class="list__options flex flex-jc-sb">
+					<template id="template">
+						<li class="list__item">
+							<input type="checkbox" id="" />
+							<label for=""></label>
+							<img class="delete-btn" src="./images/icon-cross.svg" alt="" />
+						</li>
+					</template>
+				</ul>
+
+				<ul class="options">
+					<li class="flex flex-jc-sb">
 						<span># items left</span>
 						<span>Clear Completed</span>
+					</li>
+					<li class="options__radio radio flex flex-jc-se">
+						<input class="form__radio" label="All" type="radio" id="all" name="status" value="all" />
+						<input class="form__radio" label="Active" type="radio" id="active" name="status" value="active" />
+						<input class="form__radio" label="Completed" type="radio" id="completed" name="status" value="completed" />
 					</li>
 				</ul>
 			</div>
 		</section>
 
-		<section class="filter">
-			<div class="container">
-				<div class="radio">
-					<input class="form__radio" label="All" type="radio" id="all" name="status" value="all" />
-					<input class="form__radio" label="Active" type="radio" id="active" name="status" value="active" />
-					<input class="form__radio" label="Completed" type="radio" id="completed" name="status" value="completed" />
-				</div>
-			</div>
-			<!-- .radio input {
-		width: auto;
-		height: 100%;
-		appearance: none;
-		outline: none;
-		cursor: pointer;
-		background: $color-row;
-		color: #728095;
-		transition: all 100ms linear;
-	}
-
-	.radio input:checked {
-		color: #fff;
-		background: #308ef3;
-		box-shadow: 0 1px 1px #0000002e;
-	}
-
-	.radio input:before {
-		content: attr(label);
-		display: inline-block;
-		text-align: center;
-		width: 100%;
-	} -->
-		</section>
-		Drag and drop to reorder list
+		<div class="drag">Drag and drop to reorder list</div>
 
 		<!-- <div class="attribution">
 			Challenge by
