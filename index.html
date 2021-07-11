@@ -13,7 +13,7 @@
 		<picture class="background flex">
 			<source media="(max-width: 375px)" srcset="images/bg-mobile-light.jpg" />
 			<source media="(min-width: 376px)" srcset="images/bg-desktop-light.jpg" />
-			<img class="delete-btn" class="background__img" src="images/bg-mobile-light.jpg" alt="background image light" />
+			<img class="background__img" src="images/bg-mobile-light.jpg" alt="background image light" />
 		</picture>
 
 		<header class="header">
@@ -31,8 +31,10 @@
 
 		<form action="" class="form">
 			<div class="container flex">
+				<label class="is-visually-hidden">Checkbox example</label>
 				<input type="checkbox" disabled />
-				<input type="text" name="task" id="todo" placeholder="Create a new todo..." autocomplete="off" maxlength="100" />
+				<label class="is-visually-hidden">New todo</label>
+				<input type="text" name="task" id="todo" placeholder="Create a new todo..." autocomplete="off" maxlength="100" required />
 			</div>
 		</form>
 
@@ -54,8 +56,11 @@
 						<span>Clear Completed</span>
 					</li>
 					<li class="options__radio radio flex flex-jc-se">
+						<label class="is-visually-hidden">radios options</label>
 						<input class="form__radio" label="All" type="radio" id="all" name="status" value="all" />
+						<label class="is-visually-hidden">radios options</label>
 						<input class="form__radio" label="Active" type="radio" id="active" name="status" value="active" />
+						<label class="is-visually-hidden">radios options</label>
 						<input class="form__radio" label="Completed" type="radio" id="completed" name="status" value="completed" />
 					</li>
 				</ul>
