@@ -31,9 +31,9 @@
 
 		<form action="" class="form">
 			<div class="container flex">
-				<label class="is-visually-hidden">Checkbox example</label>
-				<input type="checkbox" disabled />
-				<label class="is-visually-hidden">New todo</label>
+				<label class="is-visually-hidden" for="ex">Checkbox example</label>
+				<input type="checkbox" disabled id="ex" />
+				<label class="is-visually-hidden" for="todo">New todo</label>
 				<input type="text" name="task" id="todo" placeholder="Create a new todo..." autocomplete="off" maxlength="100" required />
 			</div>
 		</form>
@@ -56,11 +56,11 @@
 						<span>Clear Completed</span>
 					</li>
 					<li class="options__radio radio flex flex-jc-se">
-						<label class="is-visually-hidden">radios options</label>
+						<label class="is-visually-hidden" for="all">all option</label>
 						<input class="form__radio" label="All" type="radio" id="all" name="status" value="all" />
-						<label class="is-visually-hidden">radios options</label>
+						<label class="is-visually-hidden" for="active">active option</label>
 						<input class="form__radio" label="Active" type="radio" id="active" name="status" value="active" />
-						<label class="is-visually-hidden">radios options</label>
+						<label class="is-visually-hidden" for="completed">completed option</label>
 						<input class="form__radio" label="Completed" type="radio" id="completed" name="status" value="completed" />
 					</li>
 				</ul>
