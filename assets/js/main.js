@@ -6,46 +6,40 @@ const $fragmento = new DocumentFragment();
 const $itemsLeft = d.getElementById('items-left');
 
 const getData = () => {
-	const storage = localStorage.getItem('test');
+	const storage = localStorage.getItem('tasks');
 	const arrayOfTasks = storage ? JSON.parse(storage) : [];
 	return arrayOfTasks;
 };
 
 const tasks = getData();
-// console.table(tasks);
 
 //  RENDER FUNCTION
 const renderTasks = () => {
+	localStorage.setItem('tasks', JSON.stringify(tasks));
+
 	$list.innerHTML = '';
-	console.log('%c First List', 'font-weight: bold; color:red');
-	console.table(tasks);
 
 	tasks.forEach((task, index) => {
-		const status = task.completed;
-		$template.querySelector('input').checked = task.completed;
-		console.log(index + ' ' + task.completed);
+		const status = task.completed ? true : false;
+
+		$template.querySelector('input').checked = status;
 		$template.querySelector('input').setAttribute('id', index);
 		$template.querySelector('label').setAttribute('for', index);
 		$template.querySelector('label').textContent = task.task;
 		$template.querySelector('.delete-btn').dataset.id = index;
+
 		let clone = document.importNode($template, true);
 		$fragmento.appendChild(clone);
 	});
 	const strLength = tasks.length === 1 ? 'item' : 'items';
 	$itemsLeft.textContent = `${tasks.length} ${strLength} left`;
+
 	$list.appendChild($fragmento);
 };
 
 // ADD FUNCTION
 const addTask = (data) => {
-	const {completed, task} = data;
-	const entries = {
-		completed,
-		task,
-	};
-	tasks.push(entries);
-	localStorage.setItem('test', JSON.stringify(tasks));
-
+	tasks.push(data);
 	renderTasks();
 };
 
@@ -53,20 +47,18 @@ const addTask = (data) => {
 const updateTask = (id) => {
 	const {completed, task} = tasks[id];
 
-	const entries = {
+	const entry = {
 		completed: !completed,
 		task,
 	};
 
-	tasks.splice(id, 1, entries);
-	localStorage.setItem('test', JSON.stringify(tasks));
+	tasks.splice(id, 1, entry);
 	renderTasks();
 };
 
 // DELETE FUNCTION
 const deleteTask = (id) => {
 	tasks.splice(id, 1);
-	localStorage.setItem('test', JSON.stringify(tasks));
 	renderTasks();
 };
 
@@ -74,7 +66,7 @@ const deleteTask = (id) => {
 d.addEventListener('submit', (e) => {
 	e.preventDefault();
 	const formData = new FormData($form);
-	formData.set('completed', false);
+	formData.append('completed', '');
 	const entries = formData.entries();
 	const data = Object.fromEntries(entries);
 
@@ -91,7 +83,6 @@ d.addEventListener('click', (e) => {
 
 d.addEventListener('change', (e) => {
 	if (e.target.matches('.chk')) {
-		console.table(tasks);
 		updateTask(e.target.id);
 	}
 });
