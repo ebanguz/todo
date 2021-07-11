@@ -11,5 +11,9 @@ input[type='checkbox'] {
 		background-repeat: no-repeat;
 		background-position: center;
 		border: 0;
+		+ label {
+			text-decoration: line-through;
+			color: $color-light-grayish-blue;
+		}
 	}
 }
