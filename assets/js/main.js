@@ -90,5 +90,5 @@ d.addEventListener('change', (e) => {
 });
 
 // MAIN LOGIC
-renderTasks();
 darkMode('.header__btn');
+renderTasks();
