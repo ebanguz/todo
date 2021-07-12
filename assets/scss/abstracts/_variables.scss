@@ -25,3 +25,20 @@ $border-radius: 4px;
 
 // Padding
 $padding: 1em 1em;
+
+.theme {
+	--color__primary: #{$color-light-gray};
+	--color__secondary: #{$color-very-light-grayish-blue};
+	--color__text: #{$color-very-dark-grayish-blue};
+	--color__text--options: #{$color-dark-grayish-blue};
+	--color__border: #{$color-very-light-grayish-blue};
+
+	// Tema oscuro;
+	&--dark {
+		--color__primary: #{$color-very-dark-d-blue};
+		--color__secondary: #{$color-very-dark-blue};
+		--color__text: #{$color-light-grayish-blue};
+		--color__text--options: #{$color-light-grayish-blue};
+		--color__border: #{$color-very-dark-grayish-blue};
+	}
+}

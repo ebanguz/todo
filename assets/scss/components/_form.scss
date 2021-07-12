@@ -3,7 +3,7 @@
 		display: flex;
 		align-items: center;
 
-		background: $color-light-gray;
+		background: var(--color__primary);
 		border-radius: $border-radius;
 		padding: $padding;
 
@@ -12,8 +12,13 @@
 			padding: 0.2em 0;
 			border: 0;
 			outline: none;
-			background: $color-light-gray;
+			background: var(--color__primary);
 			margin-left: 0.2em;
+			color: var(--color__text);
+
+			@include placeholder {
+				color: var(--color__text);
+			}
 		}
 	}
 }

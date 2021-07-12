@@ -9,11 +9,11 @@
 		grid-template-columns: 28px 1fr 20px;
 		gap: 0.3em;
 		align-items: center;
-		font-size: 0.9rem;
 		padding: $padding;
-		background: $color-light-gray;
-		color: $color-very-dark-grayish-blue;
-		border-bottom: 1px $color-very-light-grayish-blue solid;
+		font-size: 0.9rem;
+		background: var(--color__primary);
+		color: var(--color__text);
+		border-bottom: thin var(--color__border) solid;
 
 		&:first-of-type {
 			border-radius: 5px 5px 0px 0px;
@@ -37,9 +37,9 @@
 
 	li {
 		padding: $padding;
-		background: $color-light-gray;
+		background: var(--color__primary);
 		color: $color-dark-grayish-blue;
-		border-bottom: 1px $color-very-light-grayish-blue solid;
+		border-bottom: thin var(--color__border) solid;
 
 		&:first-of-type {
 			border-radius: 0px 0px 5px 5px;
