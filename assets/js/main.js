@@ -1,3 +1,5 @@
+import darkMode from './darkMode.js';
+
 const d = document;
 const $list = d.querySelector('.list');
 const $form = d.querySelector('form');
@@ -89,3 +91,4 @@ d.addEventListener('change', (e) => {
 
 // MAIN LOGIC
 renderTasks();
+darkMode('.header__btn');
