@@ -6,6 +6,7 @@ const $form = d.querySelector('form');
 const $template = document.querySelector('#template').content;
 const $fragmento = new DocumentFragment();
 const $itemsLeft = d.getElementById('items-left');
+const $all = d.getElementById('all');
 
 const getData = () => {
 	const storage = localStorage.getItem('tasks');
@@ -16,12 +17,16 @@ const getData = () => {
 const tasks = getData();
 
 //  RENDER FUNCTION
-const renderTasks = () => {
+const renderTasks = (arrTasks = tasks) => {
 	localStorage.setItem('tasks', JSON.stringify(tasks));
+	const tasksCompleted = tasks.filter((task) => task.completed === !'');
+	const tasksActive = tasks.filter((task) => task.completed == '' || task.completed === false);
+
+	const array = arrTasks === tasks ? tasks : arrTasks ? tasksCompleted : tasksActive;
 
 	$list.innerHTML = '';
 
-	tasks.forEach((task, index) => {
+	array.forEach((task, index) => {
 		const status = task.completed ? true : false;
 
 		$template.querySelector('input').checked = status;
@@ -33,8 +38,8 @@ const renderTasks = () => {
 		let clone = document.importNode($template, true);
 		$fragmento.appendChild(clone);
 	});
-	const strLength = tasks.length === 1 ? 'item' : 'items';
-	$itemsLeft.textContent = `${tasks.length} ${strLength} left`;
+	const strLength = tasksActive.length === 1 ? 'item' : 'items';
+	$itemsLeft.textContent = `${tasksActive.length} ${strLength} left`;
 
 	$list.appendChild($fragmento);
 };
@@ -55,6 +60,7 @@ const updateTask = (id) => {
 	};
 
 	tasks.splice(id, 1, entry);
+	$all.checked = true;
 	renderTasks();
 };
 
@@ -76,10 +82,16 @@ d.addEventListener('submit', (e) => {
 	$form.reset();
 });
 
-// DELETE EVENT
+// DELETE EVENT AND RADIO BUTTONS
 d.addEventListener('click', (e) => {
 	if (e.target.matches('.delete-btn')) {
 		deleteTask(e.target.dataset.id);
+	}
+
+	if (e.target.matches('.options__radio input')) {
+		if (e.target.id === 'all') renderTasks();
+		if (e.target.id === 'active') renderTasks(false);
+		if (e.target.id === 'completed') renderTasks(true);
 	}
 });
 
