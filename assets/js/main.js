@@ -70,14 +70,6 @@ const deleteTask = (id) => {
 	renderTasks();
 };
 
-// CLEAR COMPLETED FUNCTION
-const clearCompleted = () => {
-	const arrCompleted = tasks.filter((task) => task.completed == '' || task.completed === false);
-
-	tasks.splice(0, tasks.length, ...arrCompleted);
-	renderTasks();
-};
-
 // SUBMIT EVENT
 d.addEventListener('submit', (e) => {
 	e.preventDefault();
@@ -89,6 +81,14 @@ d.addEventListener('submit', (e) => {
 	addTask(data);
 	$form.reset();
 });
+
+// CLEAR COMPLETED FUNCTION
+const clearCompleted = () => {
+	const arrCompleted = tasks.filter((task) => task.completed == '' || task.completed === false);
+
+	tasks.splice(0, tasks.length, ...arrCompleted);
+	renderTasks();
+};
 
 // DELETE EVENT AND RADIO BUTTONS
 d.addEventListener('click', (e) => {
