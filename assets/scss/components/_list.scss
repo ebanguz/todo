@@ -44,6 +44,13 @@
 		&:first-of-type {
 			border-radius: 0px 0px 5px 5px;
 		}
+
+		.clear {
+			cursor: pointer;
+			&:hover {
+				color: $color-primary-bright-blue;
+			}
+		}
 	}
 	border-radius: 0px 0px 5px 5px;
 }

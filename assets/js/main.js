@@ -19,10 +19,10 @@ const tasks = getData();
 //  RENDER FUNCTION
 const renderTasks = (arrTasks = tasks) => {
 	localStorage.setItem('tasks', JSON.stringify(tasks));
-	const tasksCompleted = tasks.filter((task) => task.completed === !'');
-	const tasksActive = tasks.filter((task) => task.completed == '' || task.completed === false);
+	const tasksCompleted = tasks.filter((task) => task.completed === !''); //true
+	const tasksActive = tasks.filter((task) => task.completed == '' || task.completed === false); //false
 
-	const array = arrTasks === tasks ? tasks : arrTasks ? tasksCompleted : tasksActive;
+	const array = arrTasks === tasks ? tasks : arrTasks ? tasksCompleted : tasksActive; //depending condition
 
 	$list.innerHTML = '';
 
@@ -70,6 +70,14 @@ const deleteTask = (id) => {
 	renderTasks();
 };
 
+// CLEAR COMPLETED FUNCTION
+const clearCompleted = () => {
+	const arrCompleted = tasks.filter((task) => task.completed == '' || task.completed === false);
+
+	tasks.splice(0, tasks.length, ...arrCompleted);
+	renderTasks();
+};
+
 // SUBMIT EVENT
 d.addEventListener('submit', (e) => {
 	e.preventDefault();
@@ -92,6 +100,11 @@ d.addEventListener('click', (e) => {
 		if (e.target.id === 'all') renderTasks();
 		if (e.target.id === 'active') renderTasks(false);
 		if (e.target.id === 'completed') renderTasks(true);
+	}
+
+	if (e.target.matches('.clear')) {
+		clearCompleted();
+		$all.checked = true;
 	}
 });
 
