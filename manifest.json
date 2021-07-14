@@ -1,0 +1,26 @@
+{
+	"name": "TODO APP BY EBAN",
+	"short_name": "TODO APP",
+	"description": "TODO APP created by Esteban Guzmán",
+	"background_color": "#fafafa",
+	"theme_color": "#6B56D0",
+	"orientation": "portrait",
+	"display": "standalone",
+	"start_url": "./?utm_source=web_app_manifest",
+	"scope": "./",
+	"lang": "en",
+	"icons": [
+		{
+			"src": "icons/manifest-icon-192.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "icons/manifest-icon-512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "maskable any"
+		}
+	]
+}
