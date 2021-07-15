@@ -11,9 +11,10 @@ workbox.core.setCacheNameDetails({
 });
 workbox.precaching.suppressWarnings();
 
-self._precacheManifest = ['/offline.html', '/assets/js/main.js', '/assets/js/darkMode.js', '/assets/css/main.min.css'];
+self._precacheManifest = ['/index.html', '/offline.html', '/assets/js/main.js', '/assets/js/darkMode.js', '/assets/css/main.min.css'];
 
 workbox.precaching.precacheAndRoute(self._precacheManifest, {});
+
 workbox.routing.registerRoute(
 	/\.(?:js|css)$/,
 	workbox.strategies.staleWhileRevalidate({
@@ -29,7 +30,7 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
 	/\.(?:png|gif|svg)$/,
-	workbox.strategies.staleWhileRevalidate({
+	new workbox.strategies.CacheFirst({
 		cacheName: dynamicCache,
 		plugins: [
 			new workbox.expiration.Plugin({
@@ -42,7 +43,7 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
 	/\.(?:jpg|jpeg)$/,
-	workbox.strategies.staleWhileRevalidate({
+	new workbox.strategies.CacheFirst({
 		cacheName: dynamicCache,
 		plugins: [
 			new workbox.expiration.Plugin({
@@ -55,7 +56,7 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
 	/.*(?:googleapis|gstatic).com.*$/,
-	workbox.strategies.cacheFirst({
+	new workbox.strategies.CacheFirst({
 		cacheName: staticCache,
 		plugins: [
 			new workbox.expiration.Plugin({
@@ -69,3 +70,27 @@ workbox.routing.registerRoute(
 	({event}) => event.request.mode === 'navigate',
 	({url}) => fetch(url.href).catch(() => caches.match('/offline.html'))
 );
+self.addEventListener('push', async (event) => {
+	const res = JSON.parse(event.data.text());
+	const {title, body, url, icon} = res.payload;
+	const options = {
+		body,
+		icon,
+		vibrate: [100],
+		data: {url},
+	};
+	event.waitUntil(showNotification(title, options));
+});
+
+const showNotification = (title, options) =>
+	new Promise((resolve) => {
+		setTimeout(() => {
+			self.registration.showNotification(title, options).then(() => resolve());
+		}, notificationDelay);
+	});
+
+self.addEventListener('notificationclick', (event) => {
+	event.notification.close();
+	const {url} = event.notification.data;
+	if (url) event.waitUntil(clients.openWindow(url));
+});
