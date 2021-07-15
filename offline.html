@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<link rel="apple-touch-icon" href="./images/todo-icon.png" />
+		<link rel="apple-touch-startup-image" href="./images/todo-icon.png" />
+
+		<link rel="icon" type="image/png" sizes="32x32" href="./images/todo-icon.png" />
+		<link rel="canonical" href="https://todo-eban.netlify.app/" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+		<link rel="manifest" href="./manifest.json" />
+
+		<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="./assets/css/main.min.css" media="screen" />
+		<title>Document</title>
+	</head>
+	<body>
+		<picture class="background flex"></picture>
+
+		<header class="header">
+			<div class="container header__content flex flex-jc-sb">
+				<h1 class="header__title">
+					TODO
+					<span class="is-visually-hidden">TODO by Eban</span>
+				</h1>
+			</div>
+		</header>
+
+		<h1>CONNECTCION ERROR</h1>
+		<h2><a href="" class="btn">TRY IT AGAN</a></h2>
+
+		<script>
+			document.addEventListener('click', (e) => {
+				if (e.target.matches('.btn')) {
+					e.preventDefault();
+					location.reload();
+				}
+			});
+		</script>
+	</body>
+</html>
