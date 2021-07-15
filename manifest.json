@@ -5,9 +5,9 @@
 	"background_color": "#fafafa",
 	"theme_color": "#6B56D0",
 	"orientation": "portrait",
-	"display": "standalone",
-	"start_url": "./?utm_source=web_app_manifest",
-	"scope": "./",
+	"display": "fullscreen",
+	"start_url": "/?source=pwa",
+	"scope": "/",
 	"lang": "en",
 	"icons": [
 		{
