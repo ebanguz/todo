@@ -67,5 +67,5 @@ workbox.routing.registerRoute(
 );
 workbox.routing.registerRoute(
 	({event}) => event.request.mode === 'navigate',
-	({url}) => fetch(url.href).catch(() => caches.match('/offline.html'))
+	({url}) => fetch(url.href).catch(() => caches.match('/index.html'))
 );
