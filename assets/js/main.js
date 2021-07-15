@@ -8,14 +8,11 @@ const $fragmento = new DocumentFragment();
 const $itemsLeft = d.getElementById('items-left');
 const $all = d.getElementById('all');
 
-const serviceWorker = async () => {
+const serviceWorker = () => {
 	if ('serviceWorker' in navigator) {
-		try {
-			await navigator.serviceWorker.register('../../sw.js');
-			// console.log('Registro de Service Worker Fine', reg);
-		} catch (err) {
-			console.error('Error en registro de Service Worker', err);
-		}
+		window.addEventListener('load', () => {
+			navigator.serviceWorker.register('./sw.js');
+		});
 	}
 };
 serviceWorker();
