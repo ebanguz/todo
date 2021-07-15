@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html role="document" lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,9 +31,9 @@
 		<title>Todo app</title>
 	</head>
 	<body>
-		<picture class="background flex"></picture>
+		<picture role="banner" class="background flex"></picture>
 
-		<header class="header">
+		<header role="heading" class="header">
 			<div class="container header__content flex flex-jc-sb">
 				<h1 class="header__title">
 					TODO
@@ -44,7 +44,7 @@
 			</div>
 		</header>
 
-		<form action="" class="form">
+		<form class="form">
 			<div class="container flex">
 				<label class="is-visually-hidden" for="ex">Checkbox example</label>
 				<input type="checkbox" disabled id="ex" />
@@ -53,7 +53,7 @@
 			</div>
 		</form>
 
-		<section class="todo-list">
+		<section role="list" class="todo-list">
 			<div class="container">
 				<ul class="list">
 					<template id="template">
@@ -82,7 +82,7 @@
 			</div>
 		</section>
 
-		<div class="drag">Drag and drop to reorder list</div>
+		<div role="text" class="drag">Drag and drop to reorder list</div>
 		<script type="module" src="./assets/js/main.js"></script>
 	</body>
 </html>
