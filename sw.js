@@ -1,52 +1,71 @@
-const CACHE_NAME = 'v1_cache_todo_app';
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.2.0/workbox-sw.js');
 
-const urlsToCache = ['./', 'https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap', 'https://fonts.gstatic.com', 'https://fonts.googleapis.com', './assets/css/main.min.css', './assets/js/main.js', './images/todo-icon.png'];
-console.table(urlsToCache);
-//durante la fase de instalación, generalmente se almacena en caché los activos estáticos
-self.addEventListener('install', (e) => {
-	e.waitUntil(
-		caches
-			.open(CACHE_NAME)
-			.then((cache) => {
-				return cache.addAll(urlsToCache).then(() => self.skipWaiting());
-			})
-			.catch((err) => console.log('Falló registro de cache', err))
-	);
+const appName = 'TODO-APP';
+const suffix = 'v1';
+const staticCache = `${appName}-static-${suffix}`;
+const dynamicCache = `${appName}-dynamic-${suffix}`;
+
+workbox.core.setCacheNameDetails({
+	prefix: appName,
+	suffix: 'v1',
 });
+workbox.precaching.suppressWarnings();
 
-//una vez que se instala el SW, se activa y busca los recursos para hacer que funcione sin conexión
-self.addEventListener('activate', (e) => {
-	const cacheWhitelist = [CACHE_NAME];
+self._precacheManifest = ['/offline.html', '/assets/js/main.js', '/assets/js/darkMode.js', '/assets/css/main.min.css'];
 
-	e.waitUntil(
-		caches
-			.keys()
-			.then((cacheNames) => {
-				return Promise.all(
-					cacheNames.map((cacheName) => {
-						//Eliminamos lo que ya no se necesita en cache
-						if (cacheWhitelist.indexOf(cacheName) === -1) {
-							return caches.delete(cacheName);
-						}
-					})
-				);
-			})
-			// Le indica al SW activar el cache actual
-			.then(() => self.clients.claim())
-	);
-});
+workbox.precaching.precacheAndRoute(self._precacheManifest, {});
+workbox.routing.registerRoute(
+	/\.(?:js|css)$/,
+	workbox.strategies.staleWhileRevalidate({
+		cacheName: staticCache,
+		plugins: [
+			new workbox.expiration.Plugin({
+				maxEntries: 10,
+				maxAgeSeconds: 10 * 24 * 60 * 60,
+			}),
+		],
+	})
+);
 
-//cuando el navegador recupera una url
-self.addEventListener('fetch', (e) => {
-	//Responder ya sea con el objeto en caché o continuar y buscar la url real
-	e.respondWith(
-		caches.match(e.request).then((res) => {
-			if (res) {
-				//recuperar del cache
-				return res;
-			}
-			//recuperar de la petición a la url
-			return fetch(e.request);
-		})
-	);
-});
+workbox.routing.registerRoute(
+	/\.(?:png|gif|svg)$/,
+	workbox.strategies.staleWhileRevalidate({
+		cacheName: dynamicCache,
+		plugins: [
+			new workbox.expiration.Plugin({
+				maxEntries: 60,
+				maxAgeSeconds: 30 * 24 * 60 * 60,
+			}),
+		],
+	})
+);
+
+workbox.routing.registerRoute(
+	/\.(?:jpg|jpeg)$/,
+	workbox.strategies.staleWhileRevalidate({
+		cacheName: dynamicCache,
+		plugins: [
+			new workbox.expiration.Plugin({
+				maxEntries: 60,
+				maxAgeSeconds: 20 * 24 * 60 * 60,
+			}),
+		],
+	})
+);
+
+workbox.routing.registerRoute(
+	/.*(?:googleapis|gstatic).com.*$/,
+	workbox.strategies.cacheFirst({
+		cacheName: staticCache,
+		plugins: [
+			new workbox.expiration.Plugin({
+				maxEntries: 10,
+				maxAgeSeconds: 90 * 24 * 60 * 6,
+			}),
+		],
+	})
+);
+workbox.routing.registerRoute(
+	({event}) => event.request.mode === 'navigate',
+	({url}) => fetch(url.href).catch(() => caches.match('/offline.html'))
+);
